@@ -3,7 +3,6 @@ const sequelize = require ('./../config/db');
 const formasPago = require('./formasPago');
 const pedidosHasProductos = require('./pedidosHasProductos');
 const productos = require('./productos');
-const usuarios = require('./usuarios');
 
 const pedidos = sequelize.define('pedidos', {
     precio_total: {
@@ -14,7 +13,9 @@ const pedidos = sequelize.define('pedidos', {
         type: DataTypes.DATE,
         allowNull:true
     }
-});
+}, {
+    timestamps: false
+  });
 
 
 pedidos.belongsTo(formasPago,{

@@ -22,7 +22,9 @@ const pedidosHasProductos = sequelize.define('pedidos_has_productos', {
             key:'id'
         }
     }
-});
+}, {
+    timestamps: false
+  });
 
 
 module.exports = pedidosHasProductos;

@@ -1,6 +1,6 @@
 const { DataTypes } = require ('sequelize');
 const sequelize = require ('./../config/db');
-const pedidos = require('./pedidos');
+
 
 const formasPago = sequelize.define('formas_pago', {
     nombre: {
@@ -11,7 +11,9 @@ const formasPago = sequelize.define('formas_pago', {
         type: DataTypes.TINYINT,
         allowNull:false
     },
-});
+}, {
+    timestamps: false
+  });
 
 
 module.exports = formasPago;

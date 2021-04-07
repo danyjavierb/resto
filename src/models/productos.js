@@ -1,7 +1,6 @@
 const { DataTypes } = require ('sequelize');
 const sequelize = require ('./../config/db');
-const pedidos = require('./pedidos');
-const pedidosHasProductos = require('./pedidosHasProductos');
+
 
 const productos = sequelize.define('productos', {
     nombre: {
@@ -20,8 +19,8 @@ const productos = sequelize.define('productos', {
         type: DataTypes.STRING,
         allowNull:false
     },
-});
-
-
+}, {
+    timestamps: false
+  });
 
 module.exports = productos;

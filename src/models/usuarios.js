@@ -29,7 +29,9 @@ const usuarios = sequelize.define('usuarios', {
         type: DataTypes.STRING,
         allowNull:false
     }
-});
+}, {
+    timestamps: false
+  });
 
 usuarios.belongsTo(rol,{
     foreignKey:'rol_id'
