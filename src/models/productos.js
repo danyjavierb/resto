@@ -17,7 +17,7 @@ const productos = sequelize.define('productos', {
     },
     imagen: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull:true
     },
 }, {
     timestamps: false

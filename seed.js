@@ -28,13 +28,16 @@ const pedidosHasProductsData = [
     { cantidad: 1, pedido_id: 3, producto_id:3 } ]
 
 
-// const data = pedidosHasProductsData.map (async ped =>  {
-//    const tempPed= await pedidosHasProductos.create(ped, { fields: ["cantidad","pedido_id", "producto_id"] })
-// });
+//  const data = pedidosHasProductsData.map (async ped =>  {
+//     const tempPed= await pedidosHasProductos.create(ped, { fields: ["cantidad","pedido_id", "producto_id"] })
+//  });
 
-pedidos.findByPk(1,{
-    include:[{
-        model:productos
-    },{model:usuarios}]
-}).then(data => console.log(data.productos.map(p=>p.nombre)))
+
+pedidos.findByPk(1, {
+    include: [
+      { model: productos,},
+      { model: usuarios },
+    ],
+  })
+  .then((data) => console.log(data.usuario));
 
