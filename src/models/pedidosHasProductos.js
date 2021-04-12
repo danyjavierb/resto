@@ -8,22 +8,27 @@ const pedidosHasProductos = sequelize.define('pedidos_has_productos', {
         type: DataTypes.INTEGER,
         allowNull:false
     },
-    pedidos_id: {
+    pedido_id: {
+        field: 'pedido_id',
         type: DataTypes.INTEGER,
+        allowNull:false,
         references: {
             model:pedidos,
-            key:'id'
+            key:'id',
         }
     },
-    productos_id: {
+    producto_id: {
+        field: 'producto_id',
         type: DataTypes.INTEGER,
+        allowNull:false,
         references: {
             model:productos,
             key:'id'
         }
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    underscored: true
   });
 
 

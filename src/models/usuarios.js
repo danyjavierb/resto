@@ -1,8 +1,5 @@
 const { DataTypes } = require ('sequelize');
 const sequelize = require ('./../config/db');
-const pedidos = require('./pedidos');
-const rol = require('./rol');
-
 
 const usuarios = sequelize.define('usuarios', {
     username: {
@@ -32,13 +29,5 @@ const usuarios = sequelize.define('usuarios', {
 }, {
     timestamps: false
   });
-
-usuarios.belongsTo(rol,{
-    foreignKey:'rol_id'
-});
-
-usuarios.hasMany(pedidos,{
-    foreignKey:'usuarios_id'
-})
 
 module.exports = usuarios;

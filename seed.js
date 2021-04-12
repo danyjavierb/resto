@@ -1,5 +1,4 @@
-const Productos = require('./src/models/productos');
-const Usuario = require ('./src/models/usuarios')
+const { pedidos, productos, usuarios } = require ('./src/models');
 
 // Users
 const usersData = [
@@ -10,14 +9,32 @@ const usersData = [
 
 // Products
 const productsData = [
-    { nombre: "focaccia", precio: 150.2, activo:1,imagen:'https://picsum.photos/200' },
-    { nombre: "verdeveggie", precio: 153.2, activo:1,imagen:'https://picsum.photos/200' },
-    { nombre: "hamclass", precio: 230.2, activo:1,imagen:'https://picsum.photos/200' }
+    { nombre: "focaccia", precio: 10, activo:1,imagen:'https://picsum.photos/200' },
+    { nombre: "verdeveggie", precio: 10, activo:1,imagen:'https://picsum.photos/200' },
+    { nombre: "hamclass", precio: 10, activo:1,imagen:'https://picsum.photos/200' }
 ];
 
+// Orders
+const pedidosData = [
+    { precio_total: 10 , fecha: '2021-03-01 12:03:23', formas_pago_id : 1, usuarios_id: 1 },
+    { precio_total: 10 , fecha: '2021-04-01 12:03:23', formas_pago_id : 2 , usuarios_id: 3 },
+    { precio_total: 10 , fecha: '2021-05-01 12:03:23', formas_pago_id : 3 , usuarios_id: 3 } 
+];
 
-const data = productsData.map (async prod =>  {
-   const tempUser= await Productos.create(prod)
-})
+const pedidosHasProductsData = [
+    { cantidad: 1, pedido_id: 1, producto_id:1 },
+    { cantidad: 1, pedido_id: 1, producto_id:2 },
+    { cantidad: 1, pedido_id: 2, producto_id:2 },
+    { cantidad: 1, pedido_id: 3, producto_id:3 } ]
 
-console.log(data)
+
+// const data = pedidosHasProductsData.map (async ped =>  {
+//    const tempPed= await pedidosHasProductos.create(ped, { fields: ["cantidad","pedido_id", "producto_id"] })
+// });
+
+pedidos.findByPk(1,{
+    include:[{
+        model:productos
+    },{model:usuarios}]
+}).then(data => console.log(data.productos.map(p=>p.nombre)))
+
