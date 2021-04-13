@@ -7,6 +7,10 @@ const pedidos = sequelize.define('pedidos', {
         type: DataTypes.DECIMAL,
         allowNull:false
     },
+    estado: {
+        type: DataTypes.ENUM(['nuevo', 'confirmado','finalizado']),
+        allowNull:false
+    },
     fecha: {
         type: DataTypes.DATE,
         allowNull:true

@@ -8,6 +8,7 @@ const rol = sequelize.define('rol', {
         allowNull:false
     }
 }, {
+    tableName:'rol',
     timestamps: false
   });
 
